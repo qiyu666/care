@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>在线扑克牌桌</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>在线扑克牌桌</h1>
+    <div class="controls">
+      <label>
+        昵称
+        <input id="nameInput" type="text" placeholder="输入你的昵称" maxlength="24">
+      </label>
+      <button id="setNameBtn" title="设置昵称">设置昵称</button>
+
+      <span class="sep"></span>
+
+      <label>
+        每人发
+        <input id="dealCount" type="number" min="0" max="10" value="5" />
+        张
+      </label>
+      <button id="newGameBtn">新局</button>
+      <button id="shuffleBtn">洗牌</button>
+      <button id="dealBtn">发牌</button>
+      <button id="drawBtn">摸牌</button>
+      <button id="nextBtn">下家</button>
+
+      <span class="sep"></span>
+
+      <button id="shareBtn" title="复制邀请链接">复制链接</button>
+    </div>
+  </header>
+
+  <main class="table">
+    <section class="stacks">
+      <div class="stack">
+        <div class="label">牌堆</div>
+        <div id="deck" class="card-stack" role="button" aria-label="牌堆"></div>
+        <div id="deckCount" class="count">0</div>
+      </div>
+
+      <div class="stack">
+        <div class="label">弃牌堆</div>
+        <div id="discard" class="card-stack"></div>
+        <div id="discardCount" class="count">0</div>
+      </div>
+    </section>
+
+    <section id="players" class="players"></section>
+  </main>
+
+  <footer class="bottombar">
+    <div id="status">状态：连接中…</div>
+    <div id="hint">提示：只有当前「行动中」的玩家可以摸牌、出牌和切换下家。</div>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
